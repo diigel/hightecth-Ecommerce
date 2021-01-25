@@ -1,0 +1,84 @@
+  {
+  "project_info": {
+    "project_number": "616674937495",
+    "project_id": "heightech-ecommerce",
+    "storage_bucket": "heightech-ecommerce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:616674937495:android:c0bfac3ef710b5f33537d2",
+        "android_client_info": {
+          "package_name": "com.hightech.ecommerce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "616674937495-3c08iut6ul9mdsssu804ogvb7rd9evar.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hightech.ecommerce",
+            "certificate_hash": "3c91634deb4589eca6c16e50a6358ade92bb564f"
+          }
+        },
+        {
+          "client_id": "616674937495-ipgcguj27mrjd6vvsi9olctpbfih2ang.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCv_mnfeBH9VTmMUZczjaV8FOHGQ9JHC6U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "616674937495-ipgcguj27mrjd6vvsi9olctpbfih2ang.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:616674937495:android:c0bfac3ef710b5f33537d2",
+        "android_client_info": {
+          "package_name": "com.hightech.ecommerce.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "616674937495-3c08iut6ul9mdsssu804ogvb7rd9evar.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hightech.ecommerce",
+            "certificate_hash": "3c91634deb4589eca6c16e50a6358ade92bb564f"
+          }
+        },
+        {
+          "client_id": "616674937495-ipgcguj27mrjd6vvsi9olctpbfih2ang.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCv_mnfeBH9VTmMUZczjaV8FOHGQ9JHC6U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "616674937495-ipgcguj27mrjd6vvsi9olctpbfih2ang.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
