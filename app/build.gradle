@@ -9,13 +9,13 @@ Properties prop = new Properties()
 prop.load(project.rootProject.file('key.properties').newDataInputStream())
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "30.0.0"
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.hightech.ecommerce"
         minSdkVersion 19
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -52,6 +52,10 @@ android {
         // but continue the build even when errors are found:
         abortOnError false
     }
+
+    viewBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -61,6 +65,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
@@ -79,4 +84,14 @@ dependencies {
 
     // Pagination
     implementation "androidx.paging:paging-runtime-ktx:3.0.0-alpha12"
+
+    // viewbinding
+    implementation 'com.github.yogacp:android-viewbinding:1.0.2'
+
+    // preferences
+    implementation "androidx.datastore:datastore-preferences:1.0.0-alpha06"
+
+    //coroutine
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2-native-mt'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2-native-mt'
 }

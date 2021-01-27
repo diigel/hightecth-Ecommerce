@@ -3,7 +3,12 @@ package com.hightech.ecommerce
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
+import androidx.lifecycle.lifecycleScope
+import com.hightech.ecommerce.auth.SignInActivity
+import com.hightech.ecommerce.boarding_page.BoardingPageActivity
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class SplashScreen : AppCompatActivity() {
 
@@ -11,8 +16,16 @@ class SplashScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
 
-        Handler().postDelayed({
-            startActivity(Intent(this,MainActivity::class.java))
-        },2000)
+        lifecycleScope.launch {
+            delay(4000)
+
+            PreferencesManager.getIsFirstLaunchAsync().collect {
+                if (it) {
+                    startActivity(Intent(this@SplashScreen, BoardingPageActivity::class.java))
+                } else {
+                    startActivity(Intent(this@SplashScreen, SignInActivity::class.java))
+                }
+            }
+        }
     }
 }
