@@ -69,12 +69,13 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation 'com.google.firebase:firebase-messaging:20.1.4'
     implementation 'androidx.multidex:multidex:2.0.1'
 
-    // Viewmodel fragment
+    // fragment extension
     implementation 'androidx.fragment:fragment-ktx:1.2.5'
 
-    // Network
+    // network
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
@@ -94,4 +95,8 @@ dependencies {
     //coroutine
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2-native-mt'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2-native-mt'
+
+    //design
+    implementation 'com.afollestad.material-dialogs:core:3.3.0'
+    implementation 'com.afollestad.material-dialogs:bottomsheets:3.3.0'
 }

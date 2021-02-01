@@ -1,28 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".auth.SignUpActivity"
+    tools:context=".ui.activity.SignUpActivity"
     tools:ignore="HardcodedText">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/ic_back"
-        app:title="Daftar"
-        app:titleTextColor="@color/orange" />
+        android:background="@color/white">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_back"
+            app:title="Daftar"
+            app:titleTextColor="@color/orange" />
+    </com.google.android.material.appbar.AppBarLayout>
+
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fillViewport="true"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -49,11 +56,13 @@
                 android:layout_marginEnd="16dp"
                 app:errorEnabled="true"
                 app:hintEnabled="false"
+                app:boxBackgroundMode="outline"
+                app:endIconMode="clear_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/lbl_name"
                 app:layout_constraintTop_toBottomOf="@+id/lbl_name">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_name"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -86,11 +95,13 @@
                 android:layout_marginEnd="16dp"
                 app:errorEnabled="true"
                 app:hintEnabled="false"
+                app:boxBackgroundMode="outline"
+                app:endIconMode="clear_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/lbl_phone_number"
                 app:layout_constraintTop_toBottomOf="@+id/lbl_phone_number">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_phone_number"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -121,17 +132,19 @@
                 android:layout_marginTop="3dp"
                 android:layout_marginEnd="16dp"
                 app:errorEnabled="true"
+                app:boxBackgroundMode="outline"
+                app:endIconMode="clear_text"
                 app:hintEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/lbl_email"
                 app:layout_constraintTop_toBottomOf="@+id/lbl_email">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_email"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="@color/light_grey"
-                    android:hint="example@gmail.com"
+                    android:hint="example@mail.com"
                     android:inputType="textEmailAddress"
                     android:maxLength="25"
                     android:paddingStart="13dp"
@@ -158,11 +171,13 @@
                 android:layout_marginEnd="16dp"
                 app:errorEnabled="true"
                 app:hintEnabled="false"
+                app:boxBackgroundMode="outline"
+                app:endIconMode="password_toggle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/lbl_password"
                 app:layout_constraintTop_toBottomOf="@+id/lbl_password">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_password"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -193,11 +208,13 @@
                 android:layout_marginEnd="16dp"
                 app:errorEnabled="true"
                 app:hintEnabled="false"
+                app:boxBackgroundMode="outline"
+                app:endIconMode="password_toggle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/lbl_confirm_password"
                 app:layout_constraintTop_toBottomOf="@+id/lbl_confirm_password">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_confirm_password"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -216,7 +233,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="16dp"
-                android:background="@color/orange"
+                android:background="@drawable/bg_orange_selector"
                 android:text="Daftar"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -225,4 +242,4 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

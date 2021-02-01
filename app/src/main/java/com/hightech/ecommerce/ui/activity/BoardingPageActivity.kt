@@ -1,4 +1,4 @@
-package com.hightech.ecommerce.boarding_page
+package com.hightech.ecommerce.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,10 +6,9 @@ import android.viewbinding.library.activity.viewBinding
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager.widget.ViewPager
-import com.hightech.ecommerce.MainActivity
-import com.hightech.ecommerce.PreferencesManager
+import com.hightech.ecommerce.utils.PreferencesManager
 import com.hightech.ecommerce.databinding.ActivityBoardingPageBinding
-import kotlinx.coroutines.delay
+import com.hightech.ecommerce.ui.adapter.BoardingPageAdapter
 import kotlinx.coroutines.launch
 
 

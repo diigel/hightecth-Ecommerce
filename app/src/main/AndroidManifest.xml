@@ -16,7 +16,15 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,UnusedAttribute">
 
-        <activity android:name=".SplashScreen">
+        <service
+            android:name=".FirebaseService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity android:name=".ui.activity.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,10 +32,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".boarding_page.BoardingPageActivity"/>
-        <activity android:name=".auth.SignUpActivity" />
-        <activity android:name=".auth.SignInActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".ui.activity.BoardingPageActivity"/>
+        <activity android:name=".ui.activity.SignUpActivity" />
+        <activity android:name=".ui.activity.SignInActivity" />
+        <activity android:name=".ui.activity.MainActivity" />
     </application>
 
 </manifest>

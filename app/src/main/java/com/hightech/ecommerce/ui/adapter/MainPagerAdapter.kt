@@ -1,4 +1,4 @@
-package com.hightech.ecommerce
+package com.hightech.ecommerce.ui.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

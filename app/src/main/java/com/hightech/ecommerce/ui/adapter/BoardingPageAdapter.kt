@@ -1,4 +1,4 @@
-package com.hightech.ecommerce.boarding_page
+package com.hightech.ecommerce.ui.adapter
 
 import android.annotation.SuppressLint
 import android.view.View
@@ -7,8 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.viewpager.widget.PagerAdapter
 import com.hightech.ecommerce.R
-import com.hightech.ecommerce.layoutInflater
-import com.hightech.ecommerce.loadImage
+import com.hightech.ecommerce.utils.layoutInflater
+import com.hightech.ecommerce.utils.loadImage
 
 class BoardingPageAdapter(private val pageIs: Array<Int>) : PagerAdapter() {
 

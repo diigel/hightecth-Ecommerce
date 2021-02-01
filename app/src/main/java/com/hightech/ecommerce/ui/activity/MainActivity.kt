@@ -1,10 +1,15 @@
-package com.hightech.ecommerce
+package com.hightech.ecommerce.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.viewbinding.library.activity.viewBinding
 import androidx.viewpager.widget.ViewPager
+import com.hightech.ecommerce.ui.fragment.AccountFragment
+import com.hightech.ecommerce.ui.fragment.HistoryFragment
+import com.hightech.ecommerce.ui.fragment.HomeFragment
+import com.hightech.ecommerce.R
 import com.hightech.ecommerce.databinding.ActivityMainBinding
+import com.hightech.ecommerce.ui.adapter.MainPagerAdapter
 
 class MainActivity : AppCompatActivity() {
 
