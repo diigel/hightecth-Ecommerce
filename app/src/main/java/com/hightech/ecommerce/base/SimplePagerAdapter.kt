@@ -1,10 +1,11 @@
-package com.hightech.ecommerce.ui.adapter
+package com.hightech.ecommerce.base
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 
-class MainPagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+class SimplePagerAdapter(fragmentManager: FragmentManager) :
+    FragmentPagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
     private val fragmentItems: MutableList<Fragment> = mutableListOf()
 
     override fun getItem(position: Int): Fragment = fragmentItems[position]

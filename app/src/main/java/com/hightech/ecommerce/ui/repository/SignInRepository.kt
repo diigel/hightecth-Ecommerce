@@ -6,7 +6,6 @@ import com.hightech.ecommerce.data.SignIn
 import com.hightech.ecommerce.data.response.SignInResponse
 import com.hightech.ecommerce.network.Network
 import com.hightech.ecommerce.utils.Mapper
-import com.hightech.ecommerce.utils.PreferencesManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -31,7 +30,7 @@ class SignInRepository {
             ) {
                 val data = response.body()
                 if (data != null) {
-                    signInModel.postValue(Mapper.signIn(data))
+                    signInModel.postValue(Mapper.mapToSignIn(data))
                 }else{
                     signInModel.postValue(null)
                 }

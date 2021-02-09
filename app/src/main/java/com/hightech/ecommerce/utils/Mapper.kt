@@ -7,7 +7,7 @@ import com.hightech.ecommerce.data.response.SignUpResponse
 
 object Mapper {
 
-    fun signIn(response : SignInResponse) : SignIn {
+    fun mapToSignIn(response : SignInResponse) : SignIn {
         return SignIn(
             userId = response.data?.user_id,
             token = response.data?.token,
@@ -23,7 +23,7 @@ object Mapper {
         )
     }
 
-    fun signUp(response: SignUpResponse) : SignUp {
+    fun mapToSignUp(response: SignUpResponse) : SignUp {
         return SignUp(
             status = response.status,
             message = response.message,

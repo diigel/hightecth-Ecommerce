@@ -58,7 +58,6 @@ class SignInActivity : AppCompatActivity() {
                     deviceDev = response.deviceDev,
                     token = response.token
                 )
-                startActivity(Intent(this, MainActivity::class.java))
             } else {
                 longToast(response.message)
             }
@@ -108,6 +107,7 @@ class SignInActivity : AppCompatActivity() {
             PreferencesManager.saveAuthDeviceDev(deviceDev ?:"")
             PreferencesManager.saveAuthDeviceUniqId(deviceUniqId?:"")
             PreferencesManager.saveAuthToken(token?:"")
+            startActivity(Intent(this@SignInActivity, MainActivity::class.java))
         }
 
     }

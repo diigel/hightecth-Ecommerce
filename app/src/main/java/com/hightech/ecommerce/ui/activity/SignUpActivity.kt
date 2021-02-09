@@ -5,6 +5,11 @@ import android.os.Bundle
 import android.viewbinding.library.activity.viewBinding
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
+import com.hightech.ecommerce.base.DataState
+import com.hightech.ecommerce.base.DataStateListener
+import com.hightech.ecommerce.base.bindToAlertDialog
+import com.hightech.ecommerce.base.setOnListerner
+import com.hightech.ecommerce.data.SignUp
 import com.hightech.ecommerce.databinding.ActivitySignUpBinding
 import com.hightech.ecommerce.ui.viewmodel.SignUpViewModel
 import com.hightech.ecommerce.utils.*
@@ -42,19 +47,26 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun requestSignUp() {
-        viewmodel.signUp.observe(this, Observer { response ->
-            loader.dismiss()
-            if (response.status) {
-                showDialogInfo(
-                    response.message,
-                    buttonText = "Kembali",
-                    title = "Registrasi",
-                    dialogResult = {
-                        finish()
-                    })
-            } else {
-                longToast(response.message)
-            }
+        viewmodel.signUpState.observe(this, Observer { state ->
+            state.bindToAlertDialog(loader)
+            state.setOnListerner(object : DataStateListener<SignUp> {
+                override fun onLoading() {}
+                override fun onIdle() {}
+                override fun onFailed(t: Throwable) {}
+                override fun onSuccess(data: SignUp) {
+                    if (data.status) {
+                        showDialogInfo(
+                            data.message,
+                            buttonText = "Kembali",
+                            title = "Registrasi",
+                            dialogResult = {
+                                finish()
+                            })
+                    } else {
+                        longToast(data.message)
+                    }
+                }
+            })
         })
     }
 
@@ -79,7 +91,7 @@ class SignUpActivity : AppCompatActivity() {
             }
 
             etPhoneNumber.textWacther(true) { phoneNumber ->
-                when{
+                when {
                     phoneNumber.length < 10 -> {
                         validateButton[1] = ""
                         txtInputPhoneNumber.error = "Minimal nomer handphoen 10 karakter"
@@ -120,12 +132,12 @@ class SignUpActivity : AppCompatActivity() {
             }
 
             etPassword.textWacther { password ->
-                when{
+                when {
                     password.length < 6 -> {
                         validateButton[3] = ""
                         txtInputPassword.error = "Password minimal 6 karakter"
                     }
-                    password.isNotEmpty() ->{
+                    password.isNotEmpty() -> {
                         validateButton[3] = password
                         txtInputPassword.error = null
                     }

@@ -9,7 +9,7 @@ import com.hightech.ecommerce.ui.fragment.HistoryFragment
 import com.hightech.ecommerce.ui.fragment.HomeFragment
 import com.hightech.ecommerce.R
 import com.hightech.ecommerce.databinding.ActivityMainBinding
-import com.hightech.ecommerce.ui.adapter.MainPagerAdapter
+import com.hightech.ecommerce.base.SimplePagerAdapter
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         val historyFragment = HistoryFragment()
         val accountFragment = AccountFragment()
 
-        val pagerAdapter = MainPagerAdapter(supportFragmentManager)
+        val pagerAdapter = SimplePagerAdapter(supportFragmentManager)
         pagerAdapter.addFragment(
             homeFragment,
             historyFragment,
@@ -45,21 +45,22 @@ class MainActivity : AppCompatActivity() {
                 ) {}
                 override fun onPageSelected(position: Int) {
                     when(position){
-                        0 -> navMain.selectedItemId = R.id.home
-                        1 -> navMain.selectedItemId = R.id.history
-                        2 -> navMain.selectedItemId = R.id.account
+                        0 -> navMain.selectedItemId = R.id.item_home
+                        1 -> navMain.selectedItemId = R.id.item_history
+                        2 -> navMain.selectedItemId = R.id.item_account
                     }
                 }
                 override fun onPageScrollStateChanged(state: Int) {}
 
             })
 
-            navMain.setOnNavigationItemReselectedListener {
+            navMain.setOnNavigationItemSelectedListener {
                 when (it.itemId) {
-                    R.id.home -> vpMain.currentItem = 0
-                    R.id.history -> vpMain.currentItem = 1
-                    R.id.account -> vpMain.currentItem = 2
+                    R.id.item_home -> vpMain.currentItem = 0
+                    R.id.item_history -> vpMain.currentItem = 1
+                    R.id.item_account -> vpMain.currentItem = 2
                 }
+                true
             }
         }
 
@@ -68,9 +69,9 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         when(binding.vpMain.currentItem){
-            0 -> binding.navMain.selectedItemId = R.id.home
-            1 -> binding.navMain.selectedItemId = R.id.history
-            2 -> binding.navMain.selectedItemId = R.id.account
+            0 -> binding.navMain.selectedItemId = R.id.item_home
+            1 -> binding.navMain.selectedItemId = R.id.item_history
+            2 -> binding.navMain.selectedItemId = R.id.item_account
         }
     }
 

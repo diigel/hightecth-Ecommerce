@@ -9,7 +9,7 @@ class SignUpViewModel : ViewModel() {
 
     private val repository = SignUpRepository()
 
-    val signUp : LiveData<SignUp> = repository.signUpModel
+    val signUpState = repository.dataState
 
     fun requestSignUp (name : String, phone : String,email : String,password : String) {
         repository.requestSignUp(name, phone, email, password)
