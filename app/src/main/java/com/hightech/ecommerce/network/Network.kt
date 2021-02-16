@@ -36,6 +36,7 @@ object Network {
             .callTimeout(1, TimeUnit.MINUTES)
             .connectTimeout(1, TimeUnit.MINUTES)
             .readTimeout(1, TimeUnit.MINUTES)
+            .addInterceptor(AuthInterceptor())
 
         if (header == true) builder.addInterceptor(HeaderInterceptor())
 

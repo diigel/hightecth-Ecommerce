@@ -1,5 +1,6 @@
 package com.hightech.ecommerce.network
 
+import com.hightech.ecommerce.data.response.GetUserResponse
 import com.hightech.ecommerce.data.response.SignInResponse
 import com.hightech.ecommerce.data.response.SignUpResponse
 import retrofit2.Call
@@ -29,4 +30,7 @@ interface Routes {
         @Field("email") email : String?,
         @Field("password") password : String?
     ) : Call<SignUpResponse>
+
+    @POST("user")
+    fun getUser() : Call<GetUserResponse>
 }

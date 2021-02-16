@@ -50,15 +50,6 @@ fun ViewGroup.layoutInflater(@LayoutRes layout: Int): View {
     return LayoutInflater.from(context).inflate(layout, this, false)
 }
 
-fun Context.getStatusBarHeight(): Int {
-    var statusBarHeight = 0
-    val resourceId: Int = resources.getIdentifier("status_bar_height", "dimen", "android")
-    if (resourceId > 0) {
-        statusBarHeight = resources.getDimensionPixelSize(resourceId)
-    }
-    return statusBarHeight
-}
-
 fun ImageView.loadImage(
     url: String? = null,
     @DrawableRes drawableRes: Int? = null,

@@ -52,7 +52,7 @@ class SignUpActivity : AppCompatActivity() {
             state.setOnListerner(object : DataStateListener<SignUp> {
                 override fun onLoading() {}
                 override fun onIdle() {}
-                override fun onFailed(t: Throwable) {}
+                override fun onFailed(t: Throwable) {t.printStackTrace()}
                 override fun onSuccess(data: SignUp) {
                     if (data.status) {
                         showDialogInfo(
