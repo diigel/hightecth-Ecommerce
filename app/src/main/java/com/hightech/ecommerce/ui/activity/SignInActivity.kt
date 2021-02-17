@@ -1,14 +1,16 @@
 package com.hightech.ecommerce.ui.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.viewbinding.library.activity.viewBinding
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
-import com.google.android.material.snackbar.Snackbar
-import com.hightech.ecommerce.R
+import com.hightech.ecommerce.base.DataStateListener
+import com.hightech.ecommerce.base.bindToAlertDialog
+import com.hightech.ecommerce.base.setOnListerner
+import com.hightech.ecommerce.data.SignIn
 import com.hightech.ecommerce.databinding.ActivitySignInBinding
 import com.hightech.ecommerce.ui.viewmodel.SigInViewModel
 import com.hightech.ecommerce.utils.*
@@ -35,7 +37,6 @@ class SignInActivity : AppCompatActivity() {
             }
 
             btnSigin.setOnClickListener {
-                loader.show()
                 getToken { token ->
                     viewmodel.requestSign(
                         validateButton[0],
@@ -51,16 +52,25 @@ class SignInActivity : AppCompatActivity() {
 
     private fun requestSignIn() {
         viewmodel.signIn.observe(this, Observer { response ->
-            loader.dismiss()
-            if (response.status) {
-                saveAuth(
-                    deviceUniqId = response.deviceId,
-                    deviceDev = response.deviceDev,
-                    token = response.token
-                )
-            } else {
-                longToast(response.message)
-            }
+            response.bindToAlertDialog(loader)
+            response.setOnListerner(object : DataStateListener<SignIn> {
+                override fun onLoading() {}
+                override fun onIdle() {}
+                override fun onSuccess(data: SignIn) {
+                    if (data.status){
+                        saveAuth(
+                            deviceUniqId = data.deviceId,
+                            deviceDev = data.deviceDev,
+                            token = data.token
+                        )
+                    }else{
+                        showDialogInfo(data.message)
+                    }
+                }
+                override fun onFailed(t: Throwable) {
+                    t.printStackTrace()
+                }
+            })
         })
     }
 

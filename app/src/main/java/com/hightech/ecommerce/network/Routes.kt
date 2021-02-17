@@ -1,5 +1,6 @@
 package com.hightech.ecommerce.network
 
+import com.hightech.ecommerce.data.response.GetBannerResponse
 import com.hightech.ecommerce.data.response.GetUserResponse
 import com.hightech.ecommerce.data.response.SignInResponse
 import com.hightech.ecommerce.data.response.SignUpResponse
@@ -33,4 +34,7 @@ interface Routes {
 
     @POST("user")
     fun getUser() : Call<GetUserResponse>
+
+    @POST("banner")
+    fun getBanner() : Call<GetBannerResponse>
 }

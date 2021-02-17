@@ -2,6 +2,7 @@ package com.hightech.ecommerce.ui.repository
 
 import android.os.Build
 import androidx.lifecycle.MutableLiveData
+import com.hightech.ecommerce.base.DataState
 import com.hightech.ecommerce.data.SignIn
 import com.hightech.ecommerce.data.response.SignInResponse
 import com.hightech.ecommerce.network.Network
@@ -12,9 +13,10 @@ import retrofit2.Response
 
 class SignInRepository {
 
-    val signInModel: MutableLiveData<SignIn> = MutableLiveData()
+    val signInModel: MutableLiveData<DataState<SignIn>> = MutableLiveData(DataState.Idle())
 
     fun requestSignIn(email: String, password: String,deviceUniqId : String,token : String) {
+        signInModel.postValue(DataState.Loading())
         Network.getRoutes().signIn(
             email = email,
             password = password,
@@ -28,16 +30,22 @@ class SignInRepository {
                 call: Call<SignInResponse>,
                 response: Response<SignInResponse>
             ) {
-                val data = response.body()
-                if (data != null) {
-                    signInModel.postValue(Mapper.mapToSignIn(data))
+                if (response.isSuccessful){
+                    val data = response.body()
+                    if (data != null) {
+                        signInModel.postValue(DataState.Success(Mapper.mapToSignIn(data)))
+                    }else{
+                        signInModel.postValue(DataState.Failed(Throwable(response.message())))
+                    }
                 }else{
-                    signInModel.postValue(null)
+                    signInModel.postValue(DataState.Failed(Throwable("Terjadi Kesalahan")))
                 }
+
             }
 
             override fun onFailure(call: Call<SignInResponse>, t: Throwable) {
                 t.printStackTrace()
+                signInModel.postValue(DataState.Failed(Throwable(t)))
             }
         })
     }

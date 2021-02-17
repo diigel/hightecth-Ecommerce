@@ -1,7 +1,9 @@
 package com.hightech.ecommerce.utils
 
+import com.hightech.ecommerce.base.BannerItem
 import com.hightech.ecommerce.data.SignIn
 import com.hightech.ecommerce.data.SignUp
+import com.hightech.ecommerce.data.response.GetBannerResponse
 import com.hightech.ecommerce.data.response.SignInResponse
 import com.hightech.ecommerce.data.response.SignUpResponse
 
@@ -31,5 +33,14 @@ object Mapper {
             phone = response.data?.phone,
             email = response.data?.email
         )
+    }
+
+    fun mapToBannerItem(response: List<GetBannerResponse.DataBanner>) : List<BannerItem> {
+        val bannerItem : MutableList<BannerItem> = mutableListOf()
+        response.forEach {
+            bannerItem.add(BannerItem(url = it.image))
+        }
+
+        return bannerItem
     }
 }

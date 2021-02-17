@@ -15,7 +15,7 @@
         android:theme="@style/Theme.Ecommerce"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,UnusedAttribute">
-        <activity android:name=".ui.activity.CategoryActivity"></activity>
+        <activity android:name=".ui.activity.CategoryActivity"/>
 
         <service
             android:name=".FirebaseService"
@@ -33,8 +33,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.activity.BoardingPageActivity" />
-        <activity android:name=".ui.activity.SignUpActivity" />
-        <activity android:name=".ui.activity.SignInActivity" />
+        <activity android:name=".ui.activity.SignUpActivity"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".ui.activity.SignInActivity"
+            android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".ui.activity.MainActivity" />
     </application>
 

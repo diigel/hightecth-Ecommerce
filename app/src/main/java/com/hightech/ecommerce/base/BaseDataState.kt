@@ -10,11 +10,16 @@ interface DataStateListener<T> {
     fun onFailed(t: Throwable)
 }
 
-fun <T>DataState<T>.bindToAlertDialog(alertDialog: AlertDialog){
+fun <T>DataState<T>.bindToAlertDialog(alertDialog: AlertDialog?){
     if (this is DataState.Loading){
-        alertDialog.show()
+        if (alertDialog?.isShowing == true) {
+            alertDialog.dismiss()
+            alertDialog.show()
+        }else{
+            alertDialog?.show()
+        }
     }else {
-        alertDialog.dismiss()
+        alertDialog?.dismiss()
     }
 }
 
