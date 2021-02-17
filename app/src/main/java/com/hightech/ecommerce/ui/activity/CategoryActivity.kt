@@ -3,17 +3,29 @@ package com.hightech.ecommerce.ui.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.viewbinding.library.activity.viewBinding
+import androidx.activity.viewModels
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hightech.ecommerce.R
+import com.hightech.ecommerce.base.DataStateListener
 import com.hightech.ecommerce.data.CategoryItem
 import com.hightech.ecommerce.databinding.ActivityCategoryBinding
 import com.hightech.ecommerce.ui.adapter.CategoryMenuAdapter
 import com.hightech.ecommerce.base.SimplePagerAdapter2
+import com.hightech.ecommerce.base.bindToAlertDialog
+import com.hightech.ecommerce.base.setOnListerner
 import com.hightech.ecommerce.ui.fragment.FashionFragment
+import com.hightech.ecommerce.ui.viewmodel.CategoryViewModel
+import com.hightech.ecommerce.utils.loaderDialog
+import kotlinx.android.synthetic.main.dialog_info.*
 
 class CategoryActivity : AppCompatActivity() {
 
     private val binding: ActivityCategoryBinding by viewBinding()
+    private val viewModel : CategoryViewModel by viewModels()
+    private val loader by lazy {
+        loaderDialog()
+    }
 
     private val adapter by lazy {
         CategoryMenuAdapter(menuListener)
@@ -51,7 +63,27 @@ class CategoryActivity : AppCompatActivity() {
             val item6 = CategoryItem("Kesehatan", R.drawable.ic_menu_health)
             val item7 = CategoryItem("Produk Lainnya", R.drawable.ic_menu_health)
 
-            adapter.attachMenu(item0, item1, item2, item3, item4, item5, item6, item7)
+            viewModel.getCategory()
+            viewModel.category.observe(this@CategoryActivity, Observer { state ->
+                state.bindToAlertDialog(loader)
+                state.setOnListerner(object : DataStateListener<List<CategoryItem>> {
+                    override fun onLoading() {}
+
+                    override fun onIdle() {}
+
+                    override fun onSuccess(data: List<CategoryItem>) {
+                        if (data.isNotEmpty()){
+                            adapter.attachMenu(data)
+                        }
+                    }
+
+                    override fun onFailed(t: Throwable) {
+                        t.printStackTrace()
+                    }
+                })
+            })
+
+            //adapter.attachMenu(item0, item1, item2, item3, item4, item5, item6, item7)
             rvItemMenu.layoutManager = LinearLayoutManager(this@CategoryActivity)
             rvItemMenu.adapter = adapter
 

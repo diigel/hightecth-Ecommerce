@@ -1,9 +1,12 @@
 package com.hightech.ecommerce.utils
 
+import com.hightech.ecommerce.R
 import com.hightech.ecommerce.base.BannerItem
+import com.hightech.ecommerce.data.CategoryItem
 import com.hightech.ecommerce.data.SignIn
 import com.hightech.ecommerce.data.SignUp
 import com.hightech.ecommerce.data.response.GetBannerResponse
+import com.hightech.ecommerce.data.response.GetCategoryResponse
 import com.hightech.ecommerce.data.response.SignInResponse
 import com.hightech.ecommerce.data.response.SignUpResponse
 
@@ -42,5 +45,15 @@ object Mapper {
         }
 
         return bannerItem
+    }
+
+    fun mapToCategoryItem(response: List<GetCategoryResponse.Data>) : List<CategoryItem>{
+        val categoryItem : MutableList<CategoryItem> = mutableListOf()
+
+        response.forEach { data ->
+            categoryItem.add(CategoryItem(title = data.name,icon = R.drawable.ic_menu_fashion))
+        }
+        logi("cat -> $categoryItem")
+        return categoryItem
     }
 }

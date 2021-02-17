@@ -1,9 +1,6 @@
 package com.hightech.ecommerce.network
 
-import com.hightech.ecommerce.data.response.GetBannerResponse
-import com.hightech.ecommerce.data.response.GetUserResponse
-import com.hightech.ecommerce.data.response.SignInResponse
-import com.hightech.ecommerce.data.response.SignUpResponse
+import com.hightech.ecommerce.data.response.*
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -37,4 +34,7 @@ interface Routes {
 
     @POST("banner")
     fun getBanner() : Call<GetBannerResponse>
+
+    @POST("product/category")
+    fun getCategory() : Call<GetCategoryResponse>
 }

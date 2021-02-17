@@ -8,6 +8,7 @@ import com.hightech.ecommerce.R
 import com.hightech.ecommerce.data.CategoryItem
 import com.hightech.ecommerce.utils.layoutInflater
 import com.hightech.ecommerce.utils.loadImage
+import com.hightech.ecommerce.utils.removeDuplicatesItem
 import kotlinx.android.synthetic.main.item_list_category.view.*
 
 class CategoryMenuAdapter(private val focusListener: MenuFocusListener) : RecyclerView.Adapter<CategoryMenuAdapter.CategoryMenuViewHolder>() {
@@ -15,8 +16,10 @@ class CategoryMenuAdapter(private val focusListener: MenuFocusListener) : Recycl
     private val dataItem : MutableList<CategoryItem> = mutableListOf()
     private var globalPosition = 0
 
-    fun attachMenu(vararg item: CategoryItem){
+    fun attachMenu( item: List<CategoryItem>){
+        dataItem.clear()
         dataItem.addAll(item)
+        dataItem.removeDuplicatesItem()
         notifyDataSetChanged()
     }
 
