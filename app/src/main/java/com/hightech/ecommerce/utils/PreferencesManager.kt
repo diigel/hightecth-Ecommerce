@@ -106,6 +106,10 @@ object PreferencesManager {
         dataStore.data.first()[userName]
     }
 
+    fun getUserPasswordAsync() = dataStore.data.map {
+        it[userPassword]
+    }
+
     suspend fun saveUserId(userId: String) {
         dataStore.edit {
             it[PreferencesManager.userId] = userId

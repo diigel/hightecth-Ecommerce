@@ -15,7 +15,6 @@
         android:theme="@style/Theme.Ecommerce"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,UnusedAttribute">
-        <activity android:name=".ui.activity.CategoryActivity"/>
 
         <service
             android:name=".FirebaseService"
@@ -32,12 +31,35 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.BoardingPageActivity" />
-        <activity android:name=".ui.activity.SignUpActivity"
-            android:windowSoftInputMode="adjustResize"/>
-        <activity android:name=".ui.activity.SignInActivity"
-            android:windowSoftInputMode="adjustResize"/>
-        <activity android:name=".ui.activity.MainActivity" />
+
+        <activity
+            android:name=".ui.activity.BoardingPageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.SignUpActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.activity.SignInActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.activity.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.AddAddressActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.activity.AddressActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.UpdateProfileActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.activity.CategoryActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

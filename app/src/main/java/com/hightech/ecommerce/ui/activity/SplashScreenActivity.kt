@@ -58,7 +58,6 @@ class SplashScreenActivity : AppCompatActivity() {
                     if (t.message == "Unauthorized") {
                         isFirstLogin()
                     }
-                    logi(t.localizedMessage ?: "kkkkkk")
                     t.printStackTrace()
                 }
             })

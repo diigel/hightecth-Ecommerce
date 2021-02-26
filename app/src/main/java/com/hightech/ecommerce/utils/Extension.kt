@@ -25,6 +25,7 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.core.widget.doBeforeTextChanged
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
+import androidx.viewbinding.ViewBinding
 import com.afollestad.materialdialogs.LayoutMode
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.bottomsheets.BottomSheet
@@ -35,6 +36,7 @@ import com.google.firebase.iid.FirebaseInstanceId
 import com.hightech.ecommerce.R
 import java.util.*
 import java.util.regex.Pattern
+import kotlin.coroutines.coroutineContext
 
 const val EMAIL_REGEX = "(?:[a-zA-Z0-9!#\$%&'*+\\/=?^_`{|}~-]+(?:\\.[a-zA-Z0-9!#\$%&'*+\\/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])"
 fun isEmailValid(email: String?) = Pattern.matches(EMAIL_REGEX, email)
@@ -175,8 +177,8 @@ fun Context.showDialogInfo(
         }
         else -> {
             imageInfo?.loadImage(drawableRes = R.drawable.image_info)
-            imageInfo?.layoutParams?.width = 180.dp
-            imageInfo?.layoutParams?.height = 180.dp
+            imageInfo?.layoutParams?.width = 120.dp
+            imageInfo?.layoutParams?.height = 120.dp
         }
     }
 

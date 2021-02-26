@@ -5,48 +5,67 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".ui.activity.SignUpActivity"
-    tools:ignore="HardcodedText">
+    tools:context=".ui.activity.UpdateProfileActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:navigationIcon="@drawable/ic_back"
-            app:title="Daftar"
-            app:titleTextColor="@color/orange" />
-    </com.google.android.material.appbar.AppBarLayout>
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/white"
+            app:title="Data Diri"
+            app:titleTextColor="@color/orange"
+            app:navigationIcon="@drawable/ic_back"/>
 
+    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:fillViewport="true"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
-
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <ImageView
+                android:id="@+id/img_account"
+                android:layout_width="62dp"
+                android:layout_height="62dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/circle_grey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/img_pencil"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:background="@drawable/bg_circle_white_border_grey"
+                android:src="@drawable/ic_pencil"
+                android:padding="3dp"
+                android:layout_marginBottom="1dp"
+                app:layout_constraintBottom_toBottomOf="@+id/img_account"
+                app:layout_constraintEnd_toEndOf="@+id/img_account" />
+
             <TextView
                 android:id="@+id/lbl_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="43dp"
+                android:layout_marginTop="16dp"
                 android:text="Nama"
-                android:textColor="@color/text_color_label"
+                android:layout_marginStart="16dp"
+                android:textColor="@color/dark_grey"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/img_account" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/txt_input_name"
@@ -55,10 +74,11 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="3dp"
                 android:layout_marginEnd="16dp"
-                app:errorEnabled="true"
-                app:hintEnabled="false"
+                app:boxBackgroundColor="@android:color/transparent"
                 app:boxBackgroundMode="outline"
                 app:endIconMode="clear_text"
+                app:hintEnabled="false"
+                app:errorEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/lbl_name"
                 app:layout_constraintTop_toBottomOf="@+id/lbl_name">
@@ -68,12 +88,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="@color/light_grey"
-                    android:hint="Nama"
+                    android:hint="Username"
+                    android:imeOptions="actionNext"
                     android:inputType="textAutoComplete"
                     android:maxLength="25"
                     android:paddingStart="13dp"
                     android:paddingEnd="13dp"
-                    tools:ignore="Autofill" />
+                    android:autofillHints="Username"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -81,9 +102,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="10dp"
-                android:text="No. Handphone"
-                android:textColor="@color/text_color_label"
+                android:layout_marginTop="8dp"
+                android:text="No. Hp"
+                android:textColor="@color/dark_grey"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_input_name" />
 
@@ -94,10 +115,11 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="3dp"
                 android:layout_marginEnd="16dp"
-                app:errorEnabled="true"
-                app:hintEnabled="false"
+                app:boxBackgroundColor="@android:color/transparent"
                 app:boxBackgroundMode="outline"
                 app:endIconMode="clear_text"
+                app:hintEnabled="false"
+                app:errorEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/lbl_phone_number"
                 app:layout_constraintTop_toBottomOf="@+id/lbl_phone_number">
@@ -106,22 +128,23 @@
                     android:id="@+id/et_phone_number"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:autofillHints="Username"
                     android:background="@color/light_grey"
-                    android:hint="08***"
+                    android:hint="Nomer Handphone"
+                    android:imeOptions="actionNext"
                     android:inputType="phone"
                     android:maxLength="25"
                     android:paddingStart="13dp"
-                    android:paddingEnd="13dp"
-                    tools:ignore="Autofill" />
+                    android:paddingEnd="13dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/lbl_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="8dp"
                 android:text="Email"
-                android:textColor="@color/text_color_label"
+                android:textColor="@color/dark_grey"
                 app:layout_constraintStart_toStartOf="@+id/lbl_phone_number"
                 app:layout_constraintTop_toBottomOf="@+id/txt_input_phone_number" />
 
@@ -132,10 +155,11 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="3dp"
                 android:layout_marginEnd="16dp"
-                app:errorEnabled="true"
+                app:boxBackgroundColor="@android:color/transparent"
                 app:boxBackgroundMode="outline"
                 app:endIconMode="clear_text"
                 app:hintEnabled="false"
+                app:errorEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/lbl_email"
                 app:layout_constraintTop_toBottomOf="@+id/lbl_email">
@@ -146,45 +170,9 @@
                     android:layout_height="40dp"
                     android:background="@color/light_grey"
                     android:hint="example@mail.com"
+                    android:imeOptions="actionNext"
                     android:inputType="textEmailAddress"
                     android:maxLength="25"
-                    android:paddingStart="13dp"
-                    android:paddingEnd="13dp"
-                    tools:ignore="Autofill" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:id="@+id/lbl_password"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Password"
-                android:textColor="@color/text_color_label"
-                app:layout_constraintStart_toStartOf="@+id/lbl_email"
-                app:layout_constraintTop_toBottomOf="@+id/txt_input_email" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/txt_input_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginEnd="16dp"
-                app:errorEnabled="true"
-                app:hintEnabled="false"
-                app:boxBackgroundMode="outline"
-                app:endIconMode="password_toggle"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/lbl_password"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_password">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:background="@color/light_grey"
-                    android:hint="******"
-                    android:inputType="textPassword"
                     android:paddingStart="13dp"
                     android:paddingEnd="13dp"
                     tools:ignore="Autofill" />
@@ -194,11 +182,11 @@
                 android:id="@+id/lbl_confirm_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="8dp"
                 android:text="Konfirmasi Password"
-                android:textColor="@color/text_color_label"
-                app:layout_constraintStart_toStartOf="@+id/lbl_password"
-                app:layout_constraintTop_toBottomOf="@+id/txt_input_password" />
+                android:textColor="@color/dark_grey"
+                app:layout_constraintStart_toStartOf="@+id/lbl_email"
+                app:layout_constraintTop_toBottomOf="@+id/txt_input_email" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/txt_input_confirm_password"
@@ -228,19 +216,22 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/btn_sigup"
+                android:id="@+id/btn_submit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="46dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/bg_orange_selector"
-                android:text="Daftar"
+                android:text="Simpan"
+                android:textAllCaps="false"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_input_confirm_password" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.core.widget.NestedScrollView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

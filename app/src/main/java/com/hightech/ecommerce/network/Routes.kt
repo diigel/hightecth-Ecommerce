@@ -37,4 +37,28 @@ interface Routes {
 
     @POST("product/category")
     fun getCategory() : Call<GetCategoryResponse>
+
+    @FormUrlEncoded
+    @POST("user/update")
+    fun updateUser(
+        @Field("name") name : String?,
+        @Field("phone") phoneNumber : String?,
+        @Field("email") email : String?,
+        @Field("password") password: String?
+    ) : Call<UpdateProfileResponse>
+
+    @POST("address")
+    fun getAddress() : Call<GetAddressResponse>
+
+    @FormUrlEncoded
+    @POST("address/add")
+    fun addAddress(
+        @Field("name") name : String?,
+        @Field("phone") phoneNumber : String?,
+        @Field("email") email : String?,
+        @Field("address") address: String?,
+        @Field("province_id") province_id :Int?,
+        @Field("city_id") city_id :Int?,
+        @Field("postal_id") postal_code :Int?
+    ) : Call<AddAddressResponse>
 }
